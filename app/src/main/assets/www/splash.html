@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:#0a0a0a;
+color:#00ffff;
+font-family:Arial;
+}
+
+.loader{
+width:70px;
+height:70px;
+border:5px solid #222;
+border-top:5px solid #00ffff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader"></div>
+<h2>Loading...</h2>
+
+<script>
+setTimeout(()=>location.href="index.html",2500);
+</script>
+
+</body>
+</html>
