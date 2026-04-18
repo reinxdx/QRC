@@ -2,8 +2,8 @@ package com.qrc.pro;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.webkit.WebView;
 import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 public class MainActivity extends Activity {
 
@@ -18,12 +18,16 @@ w = new WebView(this);
 WebSettings s = w.getSettings();
 s.setJavaScriptEnabled(true);
 s.setDomStorageEnabled(true);
+s.setLoadsImagesAutomatically(true);
+s.setCacheMode(WebSettings.LOAD_DEFAULT);
+
+w.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
 
 w.addJavascriptInterface(new Object(){
 
 @android.webkit.JavascriptInterface
 public void scanQR(){
-w.loadUrl("javascript:onScanResult('Scanner coming soon')");
+w.loadUrl("javascript:onScanResult('Scanner Ready')");
 }
 
 },"Android");
