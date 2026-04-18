@@ -1,25 +1,14 @@
 function generate(){
-let text=document.getElementById("text").value.trim();
-
-if(text===""){
-alert("Enter text first");
-return;
-}
-
-document.getElementById("qrcode").innerHTML="";
-
-new QRCode(document.getElementById("qrcode"),{
-text:text,
-width:220,
-height:220
-});
+let t=document.getElementById("text").value;
+document.getElementById("qrcode").innerHTML =
+"<div style='padding:20px;color:#00ffff'>QR: "+t+"</div>";
 }
 
 function scan(){
-if(window.Android && Android.scanQR){
+if(window.Android){
 Android.scanQR();
 }else{
-document.getElementById("result").innerHTML="Scanner not available.";
+document.getElementById("result").innerHTML="Scanner unavailable";
 }
 }
 
