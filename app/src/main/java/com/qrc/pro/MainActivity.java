@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebSettings;
 
-import com.journeyapps.barcodescanner.ScanContract;
-import com.journeyapps.barcodescanner.ScanOptions;
-
 public class MainActivity extends Activity {
 
 WebView w;
@@ -23,27 +20,16 @@ s.setJavaScriptEnabled(true);
 s.setDomStorageEnabled(true);
 
 w.addJavascriptInterface(new Object(){
+
 @android.webkit.JavascriptInterface
 public void scanQR(){
-ScanOptions options = new ScanOptions();
-options.setPrompt("Scan QR Code");
-options.setBeepEnabled(true);
-options.setOrientationLocked(true);
-options.setTorchEnabled(true);
-scanLauncher.launch(options);
+w.loadUrl("javascript:onScanResult('Scanner coming soon')");
 }
+
 },"Android");
 
 w.loadUrl("file:///android_asset/www/splash.html");
 
 setContentView(w);
 }
-
-private final androidx.activity.result.ActivityResultLauncher<ScanOptions> scanLauncher =
-registerForActivityResult(new ScanContract(), result -> {
-if(result.getContents()!=null){
-String safe = result.getContents().replace("'", "\\'");
-w.loadUrl("javascript:onScanResult('" + safe + "')");
-}
-});
 }
