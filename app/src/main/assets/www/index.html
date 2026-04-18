@@ -4,24 +4,44 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QRC</title>
-<link rel="stylesheet" href="style.css">
-<script src="app.js"></script>
+<style>
+body{
+margin:0;
+background:black;
+color:#00ffff;
+font-family:Arial;
+text-align:center;
+padding-top:100px;
+}
+button{
+padding:15px;
+width:80%;
+border:none;
+border-radius:12px;
+background:#111;
+color:#00ffff;
+margin-top:20px;
+}
+</style>
 </head>
-
 <body>
 
-<div class="box">
-<h1>QRC Ultra Pro</h1>
+<h1>QRC PRO</h1>
+<p>App Loaded Successfully</p>
 
-<input id="text" placeholder="Enter text">
+<button onclick="scan()">Scan QR</button>
 
-<button onclick="generate()">Generate</button>
-<button onclick="scan()">Scan</button>
-
-<div id="qrcode"></div>
 <div id="result"></div>
 
-</div>
+<script>
+function scan(){
+Android.scanQR();
+}
+
+function onScanResult(data){
+document.getElementById("result").innerHTML=data;
+}
+</script>
 
 </body>
 </html>
