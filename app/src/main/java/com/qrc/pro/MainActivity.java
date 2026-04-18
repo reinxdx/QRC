@@ -2,38 +2,50 @@ package com.qrc.pro;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
 
-WebView w;
+WebView web;
 
 @Override
-protected void onCreate(Bundle savedInstanceState){
+protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 
-w = new WebView(this);
+web = new WebView(this);
+setContentView(web);
 
-WebSettings s = w.getSettings();
+WebSettings s = web.getSettings();
+
 s.setJavaScriptEnabled(true);
 s.setDomStorageEnabled(true);
+s.setAllowFileAccess(true);
+s.setAllowContentAccess(true);
+s.setDatabaseEnabled(true);
 s.setLoadsImagesAutomatically(true);
-s.setCacheMode(WebSettings.LOAD_DEFAULT);
+s.setUseWideViewPort(true);
+s.setLoadWithOverviewMode(true);
+s.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
-w.setLayerType(WebView.LAYER_TYPE_HARDWARE,null);
+web.clearCache(true);
+web.clearHistory();
 
-w.addJavascriptInterface(new Object(){
+web.setWebViewClient(new WebViewClient());
+web.setWebChromeClient(new WebChromeClient());
+
+web.addJavascriptInterface(new Object(){
 
 @android.webkit.JavascriptInterface
 public void scanQR(){
-w.loadUrl("javascript:onScanResult('Scanner Ready')");
+web.loadUrl("javascript:onScanResult('Scanner Ready')");
 }
 
-},"Android");
+}, "Android");
 
-w.loadUrl("file:///android_asset/www/splash.html");
+web.loadUrl("file:///android_asset/www/index.html");
 
-setContentView(w);
 }
 }
