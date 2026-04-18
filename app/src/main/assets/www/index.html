@@ -3,26 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QRC PRO</title>
+<title>QRC</title>
 <link rel="stylesheet" href="style.css">
 <script src="app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
 <body>
 
-<div class="wrap">
+<div class="box">
+<h1>QRC Ultra Pro</h1>
 
-<h1>QRC PRO</h1>
+<input id="text" placeholder="Enter text">
 
-<input id="text" placeholder="Enter text or link">
-
-<button onclick="generate()">Generate QR</button>
-
-<button onclick="scan()">Scan QR</button>
+<button onclick="generate()">Generate</button>
+<button onclick="scan()">Scan</button>
 
 <div id="qrcode"></div>
-
 <div id="result"></div>
 
 </div>
