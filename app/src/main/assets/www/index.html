@@ -1,47 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QRC</title>
-<style>
-body{
-margin:0;
-background:black;
-color:#00ffff;
-font-family:Arial;
-text-align:center;
-padding-top:100px;
-}
-button{
-padding:15px;
-width:80%;
-border:none;
-border-radius:12px;
-background:#111;
-color:#00ffff;
-margin-top:20px;
-}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>QRC PRO</h1>
-<p>App Loaded Successfully</p>
+<div class="topbar">
+<button class="burger" onclick="toggleMenu()">☰</button>
+<div class="brand">FB SHAREX</div>
+</div>
 
-<button onclick="scan()">Scan QR</button>
+<div id="menu" class="sidebar hide">
+<div class="menuTitle">MENU</div>
+<button onclick="closeMenu()">Home</button>
+<button onclick="saveCookie()">Save Cookie</button>
+<button onclick="aboutApp()">About</button>
+</div>
 
-<div id="result"></div>
+<div class="wrap">
 
-<script>
-function scan(){
-Android.scanQR();
-}
+<h1>Facebook Share Tool</h1>
 
-function onScanResult(data){
-document.getElementById("result").innerHTML=data;
-}
-</script>
+<input id="cookie" placeholder="Facebook Cookie">
+<input id="link" placeholder="Post Link">
+<input id="limit" placeholder="Share Limit">
 
+<button class="shareBtn" onclick="runShare()">START SHARE</button>
+
+<div id="status" class="status hide"></div>
+<div id="logs" class="logs hide"></div>
+
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
